@@ -21,7 +21,7 @@ RecordStore.prototype = {
       }
     }
     this.inventory.splice(item.indexOf, 1);
-    this.balance += item.price;
+    this.balance += record.price;
   },
   buyRecord: function(){
 

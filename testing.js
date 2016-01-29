@@ -28,12 +28,13 @@ it('should list all records', function(){
 it('should be able to sell records', function(){
   testStore.addRecord(testRecord);
   testStore.sellRecord(testRecord);
-  expect(testStore.inventory).to.deep.equal([])
+  expect(testStore.inventory).to.deep.equal(testStore.stockTake())
 });
 
 it('should increase balance on sale', function(){
+  var baseBalance = testStore.balance
   testStore.addRecord(testRecord);
   testStore.sellRecord(testRecord);
-  expect(testStore.balance).to.equal(2500 + testRecord.price);
-})
+  expect(testStore.balance).to.equal(baseBalance + testRecord.price);
+});
 });
