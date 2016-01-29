@@ -23,11 +23,9 @@ RecordStore.prototype = {
     this.inventory.splice(item.indexOf, 1);
     this.balance += record.price;
   },
-  buyRecord: function(){
-
-
-
-    this.balance -= (item.price * 0.75);
+  buyRecord: function(record){
+    this.inventory.push(record);
+    this.balance -= (record.price * 0.75);
   },
 };
 

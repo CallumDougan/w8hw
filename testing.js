@@ -37,4 +37,15 @@ it('should increase balance on sale', function(){
   testStore.sellRecord(testRecord);
   expect(testStore.balance).to.equal(baseBalance + testRecord.price);
 });
+
+it('should be able to buy records', function(){
+  testStore.buyRecord(testRecord);
+  expect(testStore.inventory).to.deep.equal(testStore.stockTake());
+});
+
+it('should decrease balance on purchase', function(){
+  var baseBalance = testStore.balance
+  testStore.buyRecord(testRecord);
+  expect(testStore.balance).to.equal(baseBalance - (testRecord.price * 0.75))
+});
 });
