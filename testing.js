@@ -7,7 +7,7 @@ var expect = chai.expect;
 
 var Record = require('./record');
 var RecordStore = require('./recordstore');
-var collector = require('./recordcollector');
+var RecordCollector = require('./recordcollector');
 
 describe('store', function(){
   beforeEach(function(){
@@ -47,5 +47,11 @@ it('should decrease balance on purchase', function(){
   var baseBalance = testStore.balance
   testStore.buyRecord(testRecord);
   expect(testStore.balance).to.equal(baseBalance - (testRecord.price * 0.75))
+});
+
+it('should accurately report its total assets', function(){
+  var baseBalance = testStore.balance;
+  testStore.addRecord(testRecord);
+  expect(testStore.audit()).to.equal(baseBalance + testRecord.price)
 });
 });
