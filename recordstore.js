@@ -1,19 +1,22 @@
 var _ = require('lodash');
 
 var RecordStore = function(name, city){
-  name = this.name;
-  city = this.city;
-  balance = 2500;
+  this.name = name;
+  this.city = city;
+  this.inventory = []
+  this.balance = 2500;
 }
 
 RecordStore.prototype = {
+  addRecord: function(record){
+    this.inventory.push(record);
+  },
   stockTake: function(){
-    for(record of inventory){
-      console.log(record.title, record.name);
-    }
+      return this.inventory;
+  }
 }
 
 
 
 
-module.exports
+module.exports = RecordStore;
