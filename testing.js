@@ -12,7 +12,7 @@ var collector = require('./recordcollector');
 describe('store', function(){
   beforeEach(function(){
     testStore = new RecordStore('name', 'city');
-    testRecord = new Record('name', 'title', 0);
+    testRecord = new Record('name', 'title', 10);
   });
 
 it('should accept new records', function(){
@@ -24,4 +24,16 @@ it('should list all records', function(){
   testStore.addRecord(testRecord);
   expect(testStore.stockTake()).to.equal(testStore.inventory);
 });
+
+it('should be able to sell records', function(){
+  testStore.addRecord(testRecord);
+  testStore.sellRecord(testRecord);
+  expect(testStore.inventory).to.deep.equal([])
+});
+
+it('should increase balance on sale', function(){
+  testStore.addRecord(testRecord);
+  testStore.sellRecord(testRecord);
+  expect(testStore.balance).to.equal(2500 + testRecord.price);
+})
 });
