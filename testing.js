@@ -59,5 +59,11 @@ describe('RecordCollector', function(){
   it('should be able to buy records from store', function(){
     testCollector.buyRecord(testStore, testRecord);
     expect(testCollector.inventory).to.deep.equal([testRecord]);
+  });
+
+  it('should spend cash appropriately', function(){
+    var baseBalance = testCollector.balance;
+    testCollector.buyRecord(testStore, testRecord);
+    expect(testCollector.balance).to.equal(baseBalance - testRecord.price);
   })
 })
