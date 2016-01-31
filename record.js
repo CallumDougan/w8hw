@@ -6,9 +6,7 @@ this.artist = artist;
 this.price = price;
 };
 
-Record.prototype = {
-
-  
+Record.prototype = {  
 }
 
 
